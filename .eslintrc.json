@@ -21,6 +21,10 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "scope:layout",
+                "onlyDependOnLibsWithTags": ["type:feature", "type:common"]
               }
             ]
           }
