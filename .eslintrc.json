@@ -24,7 +24,7 @@
               },
               {
                 "sourceTag": "scope:layout",
-                "onlyDependOnLibsWithTags": ["type:feature", "type:common"]
+                "onlyDependOnLibsWithTags": ["type:common", "type:ui"]
               }
             ]
           }
