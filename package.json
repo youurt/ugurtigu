@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "storybook": "nx run ugurtigucom:storybook",
+    "storybook-common-ui": "nx run common-ui:storybook",
     "ugurtigucom": "nx serve ugurtigucom"
   },
   "private": true,
