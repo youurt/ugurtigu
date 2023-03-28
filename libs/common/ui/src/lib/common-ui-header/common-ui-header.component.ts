@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'ugurtigu-header',
+  selector: 'ugurtigu-common-ui-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './header.component.html',
+  templateUrl: './common-ui-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class CommonUiHeaderComponent {}

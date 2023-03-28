@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ugurtigu/common/ui": ["libs/common/ui/src/index.ts"]
+      "@ugurtigu/common/ui": ["libs/common/ui/src/index.ts"],
+      "@ugurtigu/layout/feature": ["libs/layout/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

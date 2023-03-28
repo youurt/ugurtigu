@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       colors: {
         'ugurtigu-base': '#1f1f24',
+        'ugurtigu-contrast': '#fdfcfe',
       },
     },
   },
