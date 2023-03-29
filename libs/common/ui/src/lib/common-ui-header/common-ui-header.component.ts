@@ -5,7 +5,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'ugurtigu-common-ui-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './common-ui-header.component.html',
+  template: `<header class="py-6 sticky top-0 z-10 bg-ugurtigu-base">
+    <nav class="max-w-[1280px] mx-auto flex justify-between px-4">header</nav>
+  </header> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommonUiHeaderComponent {}

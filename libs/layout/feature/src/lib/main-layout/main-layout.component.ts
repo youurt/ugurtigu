@@ -13,7 +13,15 @@ import { LayoutFeatureMainComponent } from '../layout-feature-main/layout-featur
     LayoutFeatureHeaderComponent,
     LayoutFeatureFooterComponent,
   ],
-  templateUrl: './main-layout.component.html',
+  template: `<body
+    class="bg-ugurtigu-base text-ugurtigu-contrast flex flex-col h-screen"
+  >
+    <ugurtigu-layout-feature-header></ugurtigu-layout-feature-header>
+    <div class="flex-grow">
+      <ugurtigu-layout-feature-main></ugurtigu-layout-feature-main>
+    </div>
+    <ugurtigu-layout-feature-footer></ugurtigu-layout-feature-footer>
+  </body>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent {}

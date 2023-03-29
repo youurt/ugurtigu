@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'ugurtigu-layout-feature-main',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './layout-feature-main.component.html',
+  template: `<main class="max-w-[80ch] mx-auto px-4">main</main>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutFeatureMainComponent {}

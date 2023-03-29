@@ -6,7 +6,7 @@ import { CommonUiHeaderComponent } from '@ugurtigu/common/ui';
   selector: 'ugurtigu-layout-feature-header',
   standalone: true,
   imports: [CommonModule, CommonUiHeaderComponent],
-  templateUrl: './layout-feature-header.component.html',
+  template: `<ugurtigu-common-ui-header></ugurtigu-common-ui-header>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutFeatureHeaderComponent {}
