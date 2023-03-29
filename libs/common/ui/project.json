@@ -9,7 +9,8 @@
       "executor": "@nrwl/angular:ng-packagr-lite",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/common/ui/ng-package.json"
+        "project": "libs/common/ui/ng-package.json",
+        "tailwindConfig": "libs/common/ui/tailwind.config.js"
       },
       "configurations": {
         "production": {
@@ -66,7 +67,8 @@
         "outputDir": "dist/storybook/common-ui",
         "configDir": "libs/common/ui/.storybook",
         "browserTarget": "common-ui:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": ["apps/ugurtigucom/src/styles.scss"]
       },
       "configurations": {
         "ci": {

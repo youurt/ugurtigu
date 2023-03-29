@@ -1,6 +1,6 @@
 const { createGlobPatternsForDependencies } = require('@nrwl/angular/tailwind');
 const { join } = require('path');
-const { theme } = require('./theme');
+const { theme } = require('../../../apps/ugurtigucom/theme.js');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,9 +9,7 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {
-      ...theme,
-    },
+    extend: { ...theme },
   },
   plugins: [],
 };
