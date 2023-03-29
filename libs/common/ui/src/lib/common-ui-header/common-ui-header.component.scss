@@ -1,0 +1,45 @@
+/* ==========================================================================
+   COMMON UI HEADER
+
+   - Common UI Header
+   ========================================================================== */
+
+
+
+
+
+/* Common UI Header
+   ========================================================================== */
+
+.c-common-ui-header {
+
+  &__link {
+    position: relative;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &.active:after {
+      animation: grow .8s cubic-bezier(.25,1,.5,1);
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: currentColor;
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+    }
+  }
+
+  @keyframes grow {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+ }
