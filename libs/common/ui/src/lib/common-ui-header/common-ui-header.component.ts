@@ -6,7 +6,9 @@ import { CommonUiLogoComponent } from '../common-ui-logo/common-ui-logo.componen
   selector: 'ugurtigu-common-ui-header',
   standalone: true,
   imports: [CommonModule, CommonUiLogoComponent],
-  template: `<header class="py-6 sticky top-0 z-10 bg-ugurtigu-base">
+  template: `<header
+    class="py-6 sticky top-0 z-10 bg-ugurtigu-base text-ugurtigu-contrast"
+  >
     <nav class="max-w-[1280px] mx-auto flex justify-between px-4">
       <ugurtigu-common-ui-logo></ugurtigu-common-ui-logo> Header
     </nav>
