@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'ugurtigu-root',
-  template: `<router-outlet></router-outlet>`,
+  template: `<ugurtigu-main-layout></ugurtigu-main-layout>`,
 })
 export class AppComponent {
   title = 'ugurtigucom';

@@ -16,7 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@ugurtigu/common/ui": ["libs/common/ui/src/index.ts"],
-      "@ugurtigu/layout/feature": ["libs/layout/feature/src/index.ts"]
+      "@ugurtigu/contact/feature": ["libs/contact/feature/src/index.ts"],
+      "@ugurtigu/home/feature": ["libs/home/feature/src/index.ts"],
+      "@ugurtigu/layout/feature": ["libs/layout/feature/src/index.ts"],
+      "@ugurtigu/work/feature": ["libs/work/feature/src/index.ts"],
+      "@ugurtigu/writing/feature": ["libs/writing/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
