@@ -20,18 +20,21 @@ import {
         [attr.cy]="yPos"
       ></circle>
     </svg>
+    <figcaption>
+      <span class="uppercase font-bold">Ugur Tigu</span>
+    </figcaption>
   </figure>`,
 })
 export class CommonUiLogoComponent {
   /**
    * Mouse position on the horizontal axis.
    */
-  protected xPos?: number;
+  protected xPos = 15;
 
   /**
    * Mouse position on the vertical axis.
    */
-  protected yPos?: number;
+  protected yPos = 15;
 
   /**
    * Offset value for the mouse position.
