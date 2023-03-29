@@ -11,10 +11,10 @@ import {
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: ` <figure class="flex items-center gap-2">
-    <svg role="img" width="24" height="24" class="fill-ugurtigu-contrast">
-      <rect width="24" height="24" rx="5" ry="5" />
+    <svg role="img" width="28" height="28" class="fill-ugurtigu-contrast">
+      <rect width="28" height="28" rx="5" ry="5" />
       <circle
-        r="3"
+        r="4"
         class="fill-ugurtigu-base"
         [attr.cx]="xPos"
         [attr.cy]="yPos"
