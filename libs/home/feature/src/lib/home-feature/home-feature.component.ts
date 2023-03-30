@@ -1,16 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  CommonUiCardComponent,
   CommonUiHeroComponent,
   CommonUiListButton,
   CommonUiListComponent,
   CommonUiListItem,
+  CommonUiWorkComponent,
 } from '@ugurtigu/common/ui';
 
 @Component({
   selector: 'ugurtigu-home-feature',
   standalone: true,
-  imports: [CommonModule, CommonUiHeroComponent, CommonUiListComponent],
+  imports: [
+    CommonModule,
+    CommonUiHeroComponent,
+    CommonUiListComponent,
+    CommonUiWorkComponent,
+    CommonUiCardComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ugurtigu-common-ui-hero title="Hello, my name is Uğur.">
@@ -24,8 +32,38 @@ import {
     <ugurtigu-common-ui-list
       title="Recent Thoughts"
       [listItems]="listItems"
-      [button]="button"
+      [button]="listButton"
     ></ugurtigu-common-ui-list>
+
+    <ugurtigu-common-ui-work title="Recent Work" [button]="workButton">
+      <ugurtigu-common-ui-card
+        color="bg-contrast"
+        title="Card 1"
+        subTitle="Card 1 Subtitle"
+      >
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, sequi
+          reiciendis. Expedita rem in quae labore ipsum error nisi natus libero
+          quis soluta modi ad nemo maxime, optio maiores excepturi laboriosam
+          facere fugit incidunt aspernatur odit? Ex ad ratione, illo voluptas
+          minus neque autem quas esse accusamus dolore odit necessitatibus!
+        </div>
+      </ugurtigu-common-ui-card>
+
+      <ugurtigu-common-ui-card
+        color="bg-blue"
+        title="Card 2"
+        subTitle="Card 2 Subtitle"
+      >
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, sequi
+          reiciendis. Expedita rem in quae labore ipsum error nisi natus libero
+          quis soluta modi ad nemo maxime, optio maiores excepturi laboriosam
+          facere fugit incidunt aspernatur odit? Ex ad ratione, illo voluptas
+          minus neque autem quas esse accusamus dolore odit necessitatibus!
+        </div>
+      </ugurtigu-common-ui-card>
+    </ugurtigu-common-ui-work>
   `,
 })
 export class HomeFeatureComponent {
@@ -46,10 +84,18 @@ export class HomeFeatureComponent {
   ];
 
   /**
-   * The button to be shown.
+   * The button for the list.
    */
-  button: CommonUiListButton = {
+  listButton: CommonUiListButton = {
     routePath: '/contact', // @TODO: replace with some article
+    text: 'More',
+  };
+
+  /**
+   * The button for the work.
+   */
+  workButton: CommonUiListButton = {
+    routePath: '/work', // @TODO: replace with some article
     text: 'More',
   };
 }

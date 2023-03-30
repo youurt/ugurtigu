@@ -1,3 +1,4 @@
+export { CommonUiCardComponent } from './lib/common-ui-card/common-ui-card.component';
 export {
   CommonUiHeaderComponent,
   CommonUiHeaderLink,
@@ -8,3 +9,7 @@ export {
   CommonUiListComponent,
   CommonUiListItem,
 } from './lib/common-ui-list/common-ui-list.component';
+export {
+  CommonUiWorkCard,
+  CommonUiWorkComponent,
+} from './lib/common-ui-work/common-ui-work.component';
