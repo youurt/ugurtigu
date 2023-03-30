@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./common-ui-next-button.component.scss'],
   imports: [CommonModule, MatIconModule],
   template: `<a
-    class="flex items-center gap-1 font-semibold opacity-80 cursor-pointer"
+    class="flex items-center gap-1 font-semibold opacity-80 cursor-pointer hover:opacity-100 hover:text-ugurtigu-contrast c-common-ui-next-button__link"
     (click)="navigate(routePath)"
   >
     <span class="capitalize">

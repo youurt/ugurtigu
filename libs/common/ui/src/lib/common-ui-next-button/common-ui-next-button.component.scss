@@ -13,6 +13,15 @@
 
 .c-common-ui-next-button {
 
+  &__link {
+
+    &:hover{
+      .c-common-ui-next-button__icon{
+        transform: translate(4px);
+      }
+    }
+  }
+
   &__icon{
     font-size: 18px;
     height: 18px ;
