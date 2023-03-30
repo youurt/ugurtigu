@@ -1,7 +1,11 @@
 export const theme = {
   colors: {
-    'ugurtigu-base': '#1f1f24',
-    'ugurtigu-contrast': '#fdfcfe',
+    base: '#1f1f24',
+    contrast: '#fdfcfe',
+    green: 'rgb(0, 68, 69)',
+    blue: 'rgb(57, 103, 131)',
+    red: 'rgb(150, 53, 60)',
+    purple: 'rgb(50, 41, 60)',
   },
   fontFamily: {
     serif: ['Garamond', 'serif'],

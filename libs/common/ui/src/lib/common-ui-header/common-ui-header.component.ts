@@ -26,9 +26,7 @@ export interface CommonUiHeaderLink {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./common-ui-header.component.scss'],
-  template: `<header
-    class="py-6 sticky top-0 z-10 bg-ugurtigu-base text-ugurtigu-contrast"
-  >
+  template: `<header class="py-6 sticky top-0 z-10 bg-base text-contrast">
     <nav
       class="max-w-[1280px] mx-auto flex justify-between px-4 items-center flex-col gap-4 sm:flex-row sm:gap-0"
     >
