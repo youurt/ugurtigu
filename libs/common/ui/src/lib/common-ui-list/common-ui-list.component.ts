@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonUiButtonComponent } from '../common-ui-next-button/common-ui-button.component';
+import { CommonUiButtonComponent } from '../common-ui-button/common-ui-button.component';
 import { CommonUiTagHeaderComponent } from '../common-ui-tag-header/common-ui-tag-header.component';
 
 export interface CommonUiListItem {

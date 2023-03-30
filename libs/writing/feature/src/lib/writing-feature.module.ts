@@ -11,9 +11,21 @@ import { WritingFeatureComponent } from './writing-feature/writing-feature.compo
     CommonModule,
     RouterModule.forChild([
       { path: '', component: WritingFeatureComponent },
-      { path: 'the-5-whys', component: WritingFeatureTheFiveWhysComponent },
-      { path: 'the-3-whys', component: WritingFeatureTheThreeWhysComponent },
-      { path: 'the-2-whys', component: WritingFeatureTheTwoWhysComponent },
+      {
+        path: 'the-5-whys',
+        component: WritingFeatureTheFiveWhysComponent,
+        title: 'The 5 Whys',
+      },
+      {
+        path: 'the-3-whys',
+        component: WritingFeatureTheThreeWhysComponent,
+        title: 'The 3 Whys',
+      },
+      {
+        path: 'the-2-whys',
+        component: WritingFeatureTheTwoWhysComponent,
+        title: 'The 2 Whys',
+      },
     ]),
   ],
 })
