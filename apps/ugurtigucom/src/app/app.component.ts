@@ -12,6 +12,4 @@ import { Component } from '@angular/core';
     </body>
   `,
 })
-export class AppComponent {
-  title = 'ugurtigucom';
-}
+export class AppComponent {}

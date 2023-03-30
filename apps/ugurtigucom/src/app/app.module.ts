@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
         path: '',
         loadChildren: () =>
           import('@ugurtigu/home/feature').then((mod) => mod.HomeFeatureModule),
+        title: 'Uğur Tigu - Software Developer',
       },
       {
         path: 'contact',
@@ -25,11 +26,13 @@ import { AppComponent } from './app.component';
           import('@ugurtigu/contact/feature').then(
             (mod) => mod.ContactFeatureModule
           ),
+        title: 'Contact',
       },
       {
         path: 'work',
         loadChildren: () =>
           import('@ugurtigu/work/feature').then((mod) => mod.WorkFeatureModule),
+        title: 'Work',
       },
       {
         path: 'writing',
@@ -38,6 +41,7 @@ import { AppComponent } from './app.component';
           import('@ugurtigu/writing/feature').then(
             (mod) => mod.WritingFeatureModule
           ),
+        title: 'Writing',
       },
     ]),
   ],
