@@ -9,7 +9,4 @@ export {
   CommonUiListComponent,
   CommonUiListItem,
 } from './lib/common-ui-list/common-ui-list.component';
-export {
-  CommonUiWorkCard,
-  CommonUiWorkComponent,
-} from './lib/common-ui-work/common-ui-work.component';
+export { CommonUiWorkComponent } from './lib/common-ui-work/common-ui-work.component';

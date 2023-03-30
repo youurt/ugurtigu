@@ -36,6 +36,7 @@ import {
     ></ugurtigu-common-ui-list>
 
     <ugurtigu-common-ui-work title="Recent Work" [button]="workButton">
+      <!-- @TODO: get this cards from cards-feature and use https://angular.io/api/common/SlicePipe to only show the newsest 2 cards   -->
       <ugurtigu-common-ui-card
         color="bg-contrast"
         title="Card 1"
