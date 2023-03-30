@@ -9,21 +9,17 @@ export default {
 export const Primary = {
   render: (args: CommonUiWorkComponent) => ({
     props: args,
+    template: `
+    <ugurtigu-common-ui-work
+      [title]="title"
+      [button]="button"
+    >
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis totam odio magni nisi facilis voluptatem iusto illo distinctio. Voluptatem, ex? Recusandae, itaque aut accusantium aliquam eveniet magnam voluptatum! Illo sequi nihil, doloremque accusamus consequuntur accusantium eaque, facere possimus voluptates aliquam fuga voluptatem in nam officia! Veritatis unde eum perspiciatis ad?
+    </ugurtigu-common-ui-work>
+    `,
   }),
   args: {
     title: 'Work',
-    cards: [
-      {
-        color: 'bg-base',
-        title: 'Card 1',
-        subTitle: 'Card 1 Subtitle',
-      },
-      {
-        color: 'bg-blue',
-        title: 'Card 2',
-        subTitle: 'Card 2 Subtitle',
-      },
-    ],
     button: {
       routePath: '/',
       text: 'See More',

@@ -14,7 +14,7 @@ export type CommonUiCardColor =
   imports: [CommonModule],
   template: `
     <article
-      class="w-full mb-12 p-8 rounded-2xl md:min-w-[328px] min-w-[260px] min-h-[400px] grid grid-rows-[auto_1fr] {{
+      class="w-full p-8 rounded-2xl md:min-w-[328px] min-w-[260px] min-h-[400px] grid grid-rows-[auto_1fr] {{
         color
       }}"
     >

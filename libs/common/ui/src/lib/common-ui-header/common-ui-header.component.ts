@@ -33,7 +33,7 @@ export interface CommonUiHeaderLink {
       <a [routerLink]="[mainLink]">
         <ugurtigu-common-ui-logo></ugurtigu-common-ui-logo>
       </a>
-      <div class="justify-end align-center gap-8 flex">
+      <div class="justify-end align-center md:gap-8 gap-4 flex">
         <a
           class="c-common-ui-header__link"
           routerLinkActive="active"
