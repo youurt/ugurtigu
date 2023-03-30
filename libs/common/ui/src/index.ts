@@ -10,3 +10,4 @@ export {
   CommonUiListItem,
 } from './lib/common-ui-list/common-ui-list.component';
 export { CommonUiWorkComponent } from './lib/common-ui-work/common-ui-work.component';
+export { CommonUiTagHeaderComponent } from './lib/common-ui-tag-header/common-ui-tag-header.component';
