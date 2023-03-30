@@ -26,7 +26,9 @@ export interface CommonUiListButton {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="animate-fade-in pb-12">
-      <ugurtigu-common-ui-tag-header>{{ title }}</ugurtigu-common-ui-tag-header>
+      <ugurtigu-common-ui-tag-header *ngIf="showTitle">{{
+        title
+      }}</ugurtigu-common-ui-tag-header>
       <ul>
         <li *ngFor="let listItem of listItems" class="block mb-12">
           <time class="font-serif italic font-medium text-grey2 text-md mb-2">{{
@@ -38,6 +40,7 @@ export interface CommonUiListButton {
         </li>
       </ul>
       <ugurtigu-common-ui-next-button
+        *ngIf="showNextButton"
         [routePath]="button?.routePath"
         [text]="button?.text"
       ></ugurtigu-common-ui-next-button>
@@ -50,10 +53,22 @@ export class CommonUiListComponent {
    * @param router Router
    */
   constructor(private router: Router) {}
+
+  /**
+   * Show the header of the list section.
+   */
+  @Input() showTitle = true;
+
+  /**
+   * Show the next button of the list section.
+   */
+  @Input() showNextButton = true;
+
   /**
    * The title of the list section.
    */
   @Input() title?: string;
+
   /**
    * The list items of the list section.
    */

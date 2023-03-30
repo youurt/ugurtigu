@@ -13,37 +13,51 @@ import { AppComponent } from './app.component';
     BrowserModule,
     LayoutFeatureHeaderComponent,
     LayoutFeatureFooterComponent,
-    RouterModule.forRoot([
-      {
-        path: '',
-        loadChildren: () =>
-          import('@ugurtigu/home/feature').then((mod) => mod.HomeFeatureModule),
-        title: 'Uğur Tigu - Software Developer',
-      },
-      {
-        path: 'contact',
-        loadChildren: () =>
-          import('@ugurtigu/contact/feature').then(
-            (mod) => mod.ContactFeatureModule
-          ),
-        title: 'Contact',
-      },
-      {
-        path: 'work',
-        loadChildren: () =>
-          import('@ugurtigu/work/feature').then((mod) => mod.WorkFeatureModule),
-        title: 'Work',
-      },
-      {
-        path: 'writing',
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          loadChildren: () =>
+            import('@ugurtigu/home/feature').then(
+              (mod) => mod.HomeFeatureModule
+            ),
+          title: 'Uğur Tigu - Software Developer',
+        },
+        {
+          path: 'contact',
+          loadChildren: () =>
+            import('@ugurtigu/contact/feature').then(
+              (mod) => mod.ContactFeatureModule
+            ),
+          title: 'Contact',
+        },
+        {
+          path: 'work',
+          loadChildren: () =>
+            import('@ugurtigu/work/feature').then(
+              (mod) => mod.WorkFeatureModule
+            ),
+          title: 'Work',
+        },
+        {
+          path: 'writing',
 
-        loadChildren: () =>
-          import('@ugurtigu/writing/feature').then(
-            (mod) => mod.WritingFeatureModule
-          ),
-        title: 'Writing',
-      },
-    ]),
+          loadChildren: () =>
+            import('@ugurtigu/writing/feature').then(
+              (mod) => mod.WritingFeatureModule
+            ),
+          title: 'Writing',
+        },
+      ],
+
+      {
+        // Restore the last scroll position
+        scrollPositionRestoration: 'enabled',
+        scrollOffset: [0, 0],
+        // Enable scrolling to anchors
+        anchorScrolling: 'enabled',
+      }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
