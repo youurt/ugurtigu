@@ -10,5 +10,13 @@ export const Primary = {
   render: (args: CommonUiHeaderComponent) => ({
     props: args,
   }),
-  args: {},
+  args: {
+    mainLink: '/',
+    links: [
+      { name: 'Home', link: '/', exact: true },
+      { name: 'Work', link: '/work', exact: false },
+      { name: 'Writing', link: '/writing', exact: false },
+      { name: 'Contact', link: '/contact', exact: false },
+    ],
+  },
 };
