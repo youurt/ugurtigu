@@ -25,21 +25,23 @@ export interface CommonUiListButton {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ugurtigu-common-ui-tag-header>{{ title }}</ugurtigu-common-ui-tag-header>
-    <ul>
-      <li *ngFor="let listItem of listItems" class="block mb-12">
-        <time class="font-serif italic font-medium text-grey2 text-md mb-2">{{
-          listItem.date
-        }}</time>
-        <a class="cursor-pointer" (click)="navigate(listItem.routePath)">
-          <h3 class="text-3xl font-bold">{{ listItem.title }}</h3>
-        </a>
-      </li>
-    </ul>
-    <ugurtigu-common-ui-next-button
-      [routePath]="button?.routePath"
-      [text]="button?.text"
-    ></ugurtigu-common-ui-next-button>
+    <section class="animate-fade-in pb-12">
+      <ugurtigu-common-ui-tag-header>{{ title }}</ugurtigu-common-ui-tag-header>
+      <ul>
+        <li *ngFor="let listItem of listItems" class="block mb-12">
+          <time class="font-serif italic font-medium text-grey2 text-md mb-2">{{
+            listItem.date
+          }}</time>
+          <a class="cursor-pointer" (click)="navigate(listItem.routePath)">
+            <h3 class="text-3xl font-bold">{{ listItem.title }}</h3>
+          </a>
+        </li>
+      </ul>
+      <ugurtigu-common-ui-next-button
+        [routePath]="button?.routePath"
+        [text]="button?.text"
+      ></ugurtigu-common-ui-next-button>
+    </section>
   `,
 })
 export class CommonUiListComponent {
