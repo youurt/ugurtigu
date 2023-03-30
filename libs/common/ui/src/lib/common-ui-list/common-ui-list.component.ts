@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 import { CommonUiNextButtonComponent } from '../common-ui-next-button/common-ui-next-button.component';
 import { CommonUiTagHeaderComponent } from '../common-ui-tag-header/common-ui-tag-header.component';
 
@@ -21,8 +20,6 @@ export interface CommonUiListButton {
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
-    RouterTestingModule,
     CommonUiNextButtonComponent,
     CommonUiTagHeaderComponent,
   ],
@@ -34,7 +31,7 @@ export interface CommonUiListButton {
         <time class="font-serif italic font-medium text-grey2 text-md mb-2">{{
           listItem.date
         }}</time>
-        <a [routerLink]="[listItem.routePath]">
+        <a class="cursor-pointer" (click)="navigate(listItem.routePath)">
           <h3 class="text-3xl font-bold">{{ listItem.title }}</h3>
         </a>
       </li>
@@ -46,6 +43,11 @@ export interface CommonUiListButton {
   `,
 })
 export class CommonUiListComponent {
+  /**
+   * The constructor of the list section.
+   * @param router Router
+   */
+  constructor(private router: Router) {}
   /**
    * The title of the list section.
    */
@@ -59,4 +61,12 @@ export class CommonUiListComponent {
    * The main route path of the list section.
    */
   @Input() button?: CommonUiListButton;
+
+  /**
+   * Navigate to the next button route path.
+   * @param routePath The route path of the list item.
+   */
+  protected navigate(routePath: string | undefined) {
+    this.router.navigate([routePath]);
+  }
 }

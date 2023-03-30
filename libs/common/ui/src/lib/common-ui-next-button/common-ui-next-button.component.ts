@@ -6,17 +6,16 @@ import {
   Input,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ugurtigu-common-ui-next-button',
   standalone: true,
   styleUrls: ['./common-ui-next-button.component.scss'],
-  imports: [CommonModule, RouterModule, RouterTestingModule, MatIconModule],
+  imports: [CommonModule, MatIconModule],
   template: `<a
-    class="flex items-center gap-1 font-semibold opacity-80"
-    [routerLink]="[routePath]"
+    class="flex items-center gap-1 font-semibold opacity-80 cursor-pointer"
+    (click)="navigate(routePath)"
   >
     <span class="capitalize">
       {{ text }}
@@ -29,6 +28,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 })
 export class CommonUiNextButtonComponent {
   @HostBinding('class.c-common-ui-next-button') hostClass = true;
+
+  /**
+   * The constructor of the next button.
+   * @param router Router
+   */
+  constructor(private router: Router) {}
+
   /**
    * The route path of the next button.
    */
@@ -38,4 +44,12 @@ export class CommonUiNextButtonComponent {
    * The text of the next button.
    */
   @Input() text?: string;
+
+  /**
+   * Navigate to the next button route path.
+   * @param routePath The route path of the next button.
+   */
+  protected navigate(routePath: string | undefined) {
+    this.router.navigate([routePath]);
+  }
 }
