@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
   selector: 'ugurtigu-root',
   template: `
     <body class="bg-base text-contrast flex flex-col min-h-screen">
-      <ugurtigu-layout-feature-header></ugurtigu-layout-feature-header>
+      <div class="sticky top-0 z-10">
+        <ugurtigu-layout-feature-header></ugurtigu-layout-feature-header>
+      </div>
       <main class="flex-grow max-w-[80ch] md:mx-auto px-4 mx-4">
         <router-outlet></router-outlet>
       </main>
@@ -12,6 +14,4 @@ import { Component } from '@angular/core';
     </body>
   `,
 })
-export class AppComponent {
-  title = 'ugurtigucom';
-}
+export class AppComponent {}

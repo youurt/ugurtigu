@@ -1,22 +1,26 @@
 /* ==========================================================================
-   COMMON UI NEXT BUTTON
+   COMMON UI BUTTON
 
-   - Common UI Next Button
+   - Common UI Button
    ========================================================================== */
 
 
 
 
 
-/* Component Name
+/* Common UI Button
    ========================================================================== */
 
-.c-common-ui-next-button {
+.c-common-ui-button {
 
   &__link {
 
     &:hover{
-      .c-common-ui-next-button__icon{
+      .c-common-ui-button__icon--previous {
+        transform: translate(-4px);
+      }
+
+      .c-common-ui-button__icon--next {
         transform: translate(4px);
       }
     }

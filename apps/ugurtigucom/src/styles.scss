@@ -7,6 +7,20 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 /* You can add global styles to this file, and also import other style files */
+*, :before, :after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  color-scheme: dark;
+}
+
 html{
   font-family: 'Prompt', sans-serif;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  display: block;
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonUiNextButtonComponent } from '../common-ui-next-button/common-ui-next-button.component';
+import { CommonUiButtonComponent } from '../common-ui-button/common-ui-button.component';
 import { CommonUiTagHeaderComponent } from '../common-ui-tag-header/common-ui-tag-header.component';
 
 export interface CommonUiListItem {
@@ -18,15 +18,13 @@ export interface CommonUiListButton {
 @Component({
   selector: 'ugurtigu-common-ui-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    CommonUiNextButtonComponent,
-    CommonUiTagHeaderComponent,
-  ],
+  imports: [CommonModule, CommonUiButtonComponent, CommonUiTagHeaderComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="animate-fade-in pb-12">
-      <ugurtigu-common-ui-tag-header>{{ title }}</ugurtigu-common-ui-tag-header>
+      <ugurtigu-common-ui-tag-header *ngIf="showTitle">{{
+        title
+      }}</ugurtigu-common-ui-tag-header>
       <ul>
         <li *ngFor="let listItem of listItems" class="block mb-12">
           <time class="font-serif italic font-medium text-grey2 text-md mb-2">{{
@@ -37,10 +35,11 @@ export interface CommonUiListButton {
           </a>
         </li>
       </ul>
-      <ugurtigu-common-ui-next-button
+      <ugurtigu-common-ui-button
+        *ngIf="showNextButton"
         [routePath]="button?.routePath"
         [text]="button?.text"
-      ></ugurtigu-common-ui-next-button>
+      ></ugurtigu-common-ui-button>
     </section>
   `,
 })
@@ -50,10 +49,22 @@ export class CommonUiListComponent {
    * @param router Router
    */
   constructor(private router: Router) {}
+
+  /**
+   * Show the header of the list section.
+   */
+  @Input() showTitle = true;
+
+  /**
+   * Show the next button of the list section.
+   */
+  @Input() showNextButton = true;
+
   /**
    * The title of the list section.
    */
   @Input() title?: string;
+
   /**
    * The list items of the list section.
    */
