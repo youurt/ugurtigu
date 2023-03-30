@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { MainLayoutComponent } from '@ugurtigu/layout/feature';
+import {
+  LayoutFeatureFooterComponent,
+  LayoutFeatureHeaderComponent,
+} from '@ugurtigu/layout/feature';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    MainLayoutComponent,
+    LayoutFeatureHeaderComponent,
+    LayoutFeatureFooterComponent,
     RouterModule.forRoot([
       {
         path: '',
@@ -29,6 +33,7 @@ import { AppComponent } from './app.component';
       },
       {
         path: 'writing',
+
         loadChildren: () =>
           import('@ugurtigu/writing/feature').then(
             (mod) => mod.WritingFeatureModule

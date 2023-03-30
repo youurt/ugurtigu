@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'ugurtigu-layout-feature-footer',
   standalone: true,
   imports: [CommonModule],
-  template: `<footer class="mx-auto max-w-[80ch] py-12 fade-in px-4">
+  template: `<footer class="mx-auto max-w-[80ch] py-12 animate-fade-in px-4">
     footer
   </footer>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
