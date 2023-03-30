@@ -16,7 +16,11 @@
   &__link {
 
     &:hover{
-      .c-common-ui-button__icon{
+      .c-common-ui-button__icon--previous {
+        transform: translate(-4px);
+      }
+
+      .c-common-ui-button__icon--next {
         transform: translate(4px);
       }
     }

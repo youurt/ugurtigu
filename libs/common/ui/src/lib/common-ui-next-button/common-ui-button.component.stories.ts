@@ -1,9 +1,20 @@
 import { Meta } from '@storybook/angular';
-import { CommonUiButtonComponent } from './common-ui-button.component';
+import {
+  CommonUiButtonComponent,
+  CommonUiButtonType,
+} from './common-ui-button.component';
 
 export default {
   title: 'CommonUiButtonComponent',
   component: CommonUiButtonComponent,
+  argTypes: {
+    type: {
+      control: {
+        type: 'radio',
+        options: <CommonUiButtonType[]>['next', 'previous'],
+      },
+    },
+  },
 } as Meta<CommonUiButtonComponent>;
 
 export const Primary = {
@@ -13,5 +24,6 @@ export const Primary = {
   args: {
     routePath: '/',
     text: 'More',
+    type: 'previous',
   },
 };
