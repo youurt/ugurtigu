@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <body class="bg-base text-contrast flex flex-col min-h-screen">
       <ugurtigu-layout-feature-header></ugurtigu-layout-feature-header>
-      <main class="flex-grow max-w-[80ch] mx-auto px-4">
+      <main class="flex-grow max-w-[80ch] md:mx-auto px-4 mx-4">
         <router-outlet></router-outlet>
       </main>
       <ugurtigu-layout-feature-footer></ugurtigu-layout-feature-footer>

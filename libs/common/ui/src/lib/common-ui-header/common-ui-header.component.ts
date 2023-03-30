@@ -28,12 +28,12 @@ export interface CommonUiHeaderLink {
   styleUrls: ['./common-ui-header.component.scss'],
   template: `<header class="py-6 sticky top-0 z-10 bg-base text-contrast">
     <nav
-      class="max-w-[1280px] mx-auto flex justify-between px-4 items-center flex-col gap-4 sm:flex-row sm:gap-0"
+      class="max-w-[1280px] mx-auto flex justify-between px-4 items-center flex-col gap-4 md:flex-row md:gap-0"
     >
       <a [routerLink]="[mainLink]">
         <ugurtigu-common-ui-logo></ugurtigu-common-ui-logo>
       </a>
-      <div class="justify-end align-center gap-8 flex">
+      <div class="justify-end align-center md:gap-8 gap-4 flex">
         <a
           class="c-common-ui-header__link"
           routerLinkActive="active"

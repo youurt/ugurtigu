@@ -6,7 +6,9 @@ import { CommonUiTagHeaderComponent } from '@ugurtigu/common/ui';
   selector: 'ugurtigu-layout-feature-footer',
   standalone: true,
   imports: [CommonModule, CommonUiTagHeaderComponent],
-  template: `<footer class="mx-auto max-w-[80ch] py-12 animate-fade-in px-4">
+  template: `<footer
+    class="animate-fade-in py-12 max-w-[80ch] md:mx-auto px-4 mx-4"
+  >
     <ugurtigu-common-ui-tag-header>Connect</ugurtigu-common-ui-tag-header>
     <ul class="grid gap-4">
       <li

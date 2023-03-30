@@ -15,7 +15,7 @@ import { CommonUiTagHeaderComponent } from '../common-ui-tag-header/common-ui-ta
   template: `
     <section class="animate-fade-in pt-12">
       <ugurtigu-common-ui-tag-header>{{ title }}</ugurtigu-common-ui-tag-header>
-      <main class="flex gap-4 overflow-auto">
+      <main class="flex md:flex-row flex-col gap-8 overflow-auto mb-12">
         <ng-content></ng-content>
       </main>
       <ugurtigu-common-ui-next-button
