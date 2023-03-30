@@ -31,8 +31,6 @@ import { CommonUiLogoComponent } from '../common-ui-logo/common-ui-logo.componen
           *ngFor="
             let item of [
               { name: 'Home', link: '/', exact: true },
-              { name: 'Work', link: '/work', exact: false },
-              { name: 'Writing', link: '/writing', exact: false },
               { name: 'Contact', link: '/contact', exact: false }
             ]
           "

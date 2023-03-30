@@ -1,2 +1,2 @@
-export { LayoutFeatureModule } from './lib/layout-feature.module';
-export { MainLayoutComponent } from './lib/main-layout/main-layout.component';
+export { LayoutFeatureFooterComponent } from './lib/layout-feature-footer/layout-feature-footer.component';
+export { LayoutFeatureHeaderComponent } from './lib/layout-feature-header/layout-feature-header.component';
