@@ -21,7 +21,7 @@ import {
       ></circle>
     </svg>
     <figcaption>
-      <span class="uppercase font-bold">Ugur Tigu</span>
+      <span class="uppercase font-bold">Uğur Tigu</span>
     </figcaption>
   </figure>`,
 })
