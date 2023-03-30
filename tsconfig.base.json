@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ugurtigu/common/data-access": ["libs/common/data-access/src/index.ts"],
       "@ugurtigu/common/ui": ["libs/common/ui/src/index.ts"],
       "@ugurtigu/contact/feature": ["libs/contact/feature/src/index.ts"],
       "@ugurtigu/home/feature": ["libs/home/feature/src/index.ts"],

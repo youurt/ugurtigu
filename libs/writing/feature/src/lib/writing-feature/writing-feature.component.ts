@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonDataAccessService } from '@ugurtigu/common/data-access';
 import {
   CommonUiHeroComponent,
   CommonUiListComponent,
-  CommonUiListItem,
 } from '@ugurtigu/common/ui';
 
 @Component({
@@ -22,30 +22,16 @@ import {
     <ugurtigu-common-ui-list
       [showTitle]="false"
       [showNextButton]="false"
-      [listItems]="listItems"
+      [listItems]="(writings$ | async)!"
     ></ugurtigu-common-ui-list>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WritingFeatureComponent {
+  constructor(private commonDataAccessService: CommonDataAccessService) {}
+
   /**
-   * The list items of the list section.
+   * The writings to be displayed.
    */
-  listItems: CommonUiListItem[] = [
-    {
-      date: 'May 2023',
-      title: 'The 5 Whys',
-      routePath: '/writing/the-5-whys',
-    },
-    {
-      date: 'May 2020',
-      title: 'The 3 Whys',
-      routePath: '/writing/the-3-whys',
-    },
-    {
-      date: 'May 2022',
-      title: 'The 2 Whys',
-      routePath: '/writing/the-2-whys',
-    },
-  ];
+  writings$ = this.commonDataAccessService.writings$;
 }

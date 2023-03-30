@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonDataAccessService } from '@ugurtigu/common/data-access';
 import {
   CommonUiCardComponent,
   CommonUiHeroComponent,
-  CommonUiListButton,
   CommonUiListComponent,
-  CommonUiListItem,
   CommonUiWorkComponent,
 } from '@ugurtigu/common/ui';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'ugurtigu-home-feature',
@@ -31,11 +31,14 @@ import {
     </ugurtigu-common-ui-hero>
     <ugurtigu-common-ui-list
       title="Recent Thoughts"
-      [listItems]="listItems"
-      [button]="listButton"
+      [listItems]="(writings$ | async)!"
+      [button]="(writingButton$ | async)!"
     ></ugurtigu-common-ui-list>
 
-    <ugurtigu-common-ui-work title="Recent Work" [button]="workButton">
+    <ugurtigu-common-ui-work
+      title="Recent Work"
+      [button]="(workButton$ | async)!"
+    >
       <!-- @TODO: get this cards from cards-feature and use https://angular.io/api/common/SlicePipe to only show the newsest 2 cards   -->
       <ugurtigu-common-ui-card
         color="bg-contrast"
@@ -69,34 +72,21 @@ import {
 })
 export class HomeFeatureComponent {
   /**
-   * The list items to be shown.
+   * Observable of writings.
    */
-  listItems: CommonUiListItem[] = [
-    {
-      date: '2021-01-01',
-      title: 'Interesting AI articles',
-      routePath: '/contact', // @TODO: replace with some article
-    },
-    {
-      date: '2021-02-01',
-      title: 'Interesting Food articles',
-      routePath: '/contact', // @TODO: replace with article
-    },
-  ];
+  writings$ = this.commonDataAccessService.writings$.pipe(
+    map((writings) => writings.slice(0, 2))
+  );
 
   /**
-   * The button for the list.
+   * Observable for the writing button.
    */
-  listButton: CommonUiListButton = {
-    routePath: '/contact', // @TODO: replace with some article
-    text: 'More',
-  };
+  writingButton$ = this.commonDataAccessService.writingButton$;
 
   /**
-   * The button for the work.
+   * Observable for the writing button.
    */
-  workButton: CommonUiListButton = {
-    routePath: '/work', // @TODO: replace with some article
-    text: 'More',
-  };
+  workButton$ = this.commonDataAccessService.workButton$;
+
+  constructor(private commonDataAccessService: CommonDataAccessService) {}
 }
