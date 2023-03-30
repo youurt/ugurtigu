@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonUiNextButtonComponent } from '../common-ui-next-button/common-ui-next-button.component';
+import { CommonUiButtonComponent } from '../common-ui-next-button/common-ui-button.component';
 import { CommonUiTagHeaderComponent } from '../common-ui-tag-header/common-ui-tag-header.component';
 
 export interface CommonUiListItem {
@@ -18,11 +18,7 @@ export interface CommonUiListButton {
 @Component({
   selector: 'ugurtigu-common-ui-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    CommonUiNextButtonComponent,
-    CommonUiTagHeaderComponent,
-  ],
+  imports: [CommonModule, CommonUiButtonComponent, CommonUiTagHeaderComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="animate-fade-in pb-12">
@@ -39,11 +35,11 @@ export interface CommonUiListButton {
           </a>
         </li>
       </ul>
-      <ugurtigu-common-ui-next-button
+      <ugurtigu-common-ui-button
         *ngIf="showNextButton"
         [routePath]="button?.routePath"
         [text]="button?.text"
-      ></ugurtigu-common-ui-next-button>
+      ></ugurtigu-common-ui-button>
     </section>
   `,
 })

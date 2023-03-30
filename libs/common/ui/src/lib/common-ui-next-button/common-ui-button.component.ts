@@ -9,25 +9,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ugurtigu-common-ui-next-button',
+  selector: 'ugurtigu-common-ui-button',
   standalone: true,
-  styleUrls: ['./common-ui-next-button.component.scss'],
+  styleUrls: ['./common-ui-button.component.scss'],
   imports: [CommonModule, MatIconModule],
   template: `<a
-    class="flex items-center gap-1 font-semibold opacity-80 cursor-pointer hover:opacity-100 hover:text-contrast c-common-ui-next-button__link"
+    class="flex items-center gap-1 font-semibold opacity-80 cursor-pointer hover:opacity-100 hover:text-contrast c-common-ui-button__link"
     (click)="navigate(routePath)"
   >
     <span class="capitalize">
       {{ text }}
     </span>
-    <mat-icon class="ease-in-out duration-300 c-common-ui-next-button__icon"
+    <mat-icon class="ease-in-out duration-300 c-common-ui-button__icon"
       >chevron_right</mat-icon
     >
   </a> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CommonUiNextButtonComponent {
-  @HostBinding('class.c-common-ui-next-button') hostClass = true;
+export class CommonUiButtonComponent {
+  @HostBinding('class.c-common-ui-button') hostClass = true;
 
   /**
    * The constructor of the next button.
