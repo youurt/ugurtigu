@@ -5,6 +5,7 @@ interface CommonDataAccessArticleHeading {
   id: string;
   title: string;
   content: string;
+  type: 'h2' | 'h3';
 }
 
 export interface CommonDataAccessArticleStructure
@@ -21,8 +22,9 @@ export class CommonDataAccessArticleService {
    */
   articleStructures$: Observable<CommonDataAccessArticleStructure[]> = of([
     {
-      id: 'h1',
-      title: 'some h1',
+      id: 'h2',
+      type: 'h2',
+      title: 'some h2',
       content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
       debitis odio architecto voluptates quis, aperiam itaque ratione animi
       molestiae hic modi voluptate dolorum quidem fugit voluptas repellendus
@@ -80,7 +82,8 @@ export class CommonDataAccessArticleService {
       quod hic facilis obcaecati maiores harum enim excepturi aliquam!`,
       subHeadings: [
         {
-          id: 'h2',
+          id: 'h3',
+          type: 'h3',
           title: 'Article 1 Subheading 1',
           content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
           debitis odio architecto voluptates quis, aperiam itaque ratione animi
@@ -99,7 +102,8 @@ export class CommonDataAccessArticleService {
           saepe, ab architecto quis! Pariatur, incidunt.`,
         },
         {
-          id: 'h3',
+          id: 'h312',
+          type: 'h3',
           title: 'Article 1 Subheading 2',
           content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
           debitis odio architecto voluptates quis, aperiam itaque ratione animi
@@ -121,6 +125,7 @@ export class CommonDataAccessArticleService {
         },
         {
           id: 'h31',
+          type: 'h3',
           title: 'Article 1 Subheading 3',
           content: `I am <strong>strong</strong>! Perferendis consequatur labore
           ea, iste quia non aspernatur id inventore illum molestiae cupiditate
@@ -139,6 +144,7 @@ export class CommonDataAccessArticleService {
     },
     {
       id: 'otherh1',
+      type: 'h2',
       title: 'some other h1',
       content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
       debitis odio architecto voluptates quis, aperiam itaque ratione animi
@@ -198,6 +204,7 @@ export class CommonDataAccessArticleService {
       subHeadings: [
         {
           id: 'otherh2',
+          type: 'h3',
           title: 'Article other 1 Subheading 1',
           content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
           debitis odio architecto voluptates quis, aperiam itaque ratione animi
@@ -217,6 +224,7 @@ export class CommonDataAccessArticleService {
         },
         {
           id: 'otherh3',
+          type: 'h3',
           title: 'Article other 1 Subheading 2',
           content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
           debitis odio architecto voluptates quis, aperiam itaque ratione animi
@@ -238,6 +246,7 @@ export class CommonDataAccessArticleService {
         },
         {
           id: 'otherh31',
+          type: 'h3',
           title: 'Article other 1 Subheading 3',
           content: `I am <strong>strong</strong>! Perferendis consequatur labore
           ea, iste quia non aspernatur id inventore illum molestiae cupiditate

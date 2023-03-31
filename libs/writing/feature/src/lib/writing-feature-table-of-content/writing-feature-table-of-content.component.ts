@@ -1,21 +1,52 @@
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   HostBinding,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
+interface WritingFeatureTableOfContentLink {
+  type: string | null;
+  text: string | null;
+  id: string;
+}
 @Component({
   selector: 'ugurtigu-writing-feature-table-of-content',
   styleUrls: ['./writing-feature-table-of-content.component.scss'],
   standalone: true,
   imports: [CommonModule],
-  template: `<div
-    #wrapper
-    class="flex flex-col gap-8 c-writing-feature-table-of-content__toc"
-  ></div>`,
+  template: `
+    <nav
+      class="flex flex-col gap-1 text-xs fixed right-0 top-2/4 px-6 pt-8 bg-base max-w-[250px] c-writing-feature-table-of-content__toc"
+    >
+      <a
+        *ngFor="let link of links"
+        (click)="scrollHandler(link.id)"
+        [id]="link.id + '-toc'"
+        class="cursor-pointer text-ellipsis capitalize c-writing-feature-table-of-content__toc-link"
+        [ngClass]="{
+          'is-main': link.type === 'h2',
+          'ml-2 is-sub': link.type === 'h3'
+        }"
+      >
+        <span>
+          {{ link.text }}
+        </span>
+        <span
+          class="c-writing-feature-table-of-content__toc-link-line"
+          [ngClass]="{
+            'after:w-[32px]': link.type === 'h2',
+            'after:w-[24px]': link.type === 'h3'
+          }"
+        >
+        </span>
+      </a>
+    </nav>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WritingFeatureTableOfContentComponent implements AfterViewInit {
@@ -25,12 +56,18 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
   @HostBinding('class.c-writing-feature-table-of-content') hostClass = true;
 
   /**
+   * Holds reference to the table of content links.
+   */
+  links: WritingFeatureTableOfContentLink[] = [];
+
+  /**
    * @param elRef Element reference.
    * @param viewportScroller Viewport scroller.
    */
   constructor(
     private elRef: ElementRef,
-    private viewportScroller: ViewportScroller
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   /**
@@ -38,7 +75,9 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
    */
   ngAfterViewInit(): void {
     this.generateToc();
-    this.observeToc();
+    if (this.links.length > 0) {
+      this.observeToc();
+    }
   }
 
   /**
@@ -56,12 +95,12 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
             const el = document.getElementById(
               entry.target.id + '-toc'
             ) as HTMLElement;
-            el.classList.add('text-green');
+            el.classList.add('text-accent');
           } else {
             const el = document.getElementById(
               entry.target.id + '-toc'
             ) as HTMLElement;
-            el.classList.remove('text-green');
+            el.classList.remove('text-accent');
           }
         });
       },
@@ -77,56 +116,34 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
   }
 
   /**
-   * Generate table of content dynamically from sections.
-   * Each section should have an id.
-   * Each section should have a header.
-   *
-   * @example
-   * <section id="section-1">
-   *  <h1>Section 1</h1>
-   * </section>
-   *
-   * // The above example will generate a link to the section in the corresponding table of content.
-   * // The link will be named as the header of the section.
-   * // The link will be scrolled to the section when clicked.
-   * // The link will be highlighted when the section is in the viewport.
-   * // The link will be unhighlighted when the section is not in the viewport.
+   * Extracts table of content from the DOM.
    */
   private generateToc(): void {
-    const wrapperEl = this.elRef.nativeElement.querySelector(
-      '.c-writing-feature-table-of-content__toc'
-    ) as HTMLElement;
-
     ['section'].forEach((tag) => {
       this.elRef.nativeElement.parentElement
         .querySelectorAll(tag)
         .forEach((elem: Node) => {
           const el = elem as HTMLElement;
-          const a = document.createElement('a');
-          const hEl = el.firstChild;
-          a.textContent = hEl?.textContent as string;
-          a.classList.add('cursor-pointer');
-          a.id = el.id + '-toc';
-          a.classList.add('toc-link');
 
-          a.addEventListener('click', () => this.handleClick(el));
+          const receivedLinks: WritingFeatureTableOfContentLink = {
+            type: (el.firstChild as HTMLHeadingElement).getAttribute(
+              'data-role'
+            ),
+            text: (el.firstChild as HTMLHeadingElement).textContent,
+            id: el.id,
+          };
 
-          wrapperEl.appendChild(a);
+          this.links.push(receivedLinks);
+          this.cdr.detectChanges();
         });
     });
   }
 
   /**
-   * Scrolls to the given node.
-   * @param node Node to scroll to.
+   * Scroll to section handler.
+   * @param id section id
    */
-  private handleClick(node: Node | null): void {
-    const el = document.getElementById((node as HTMLElement).id) as HTMLElement;
-    const header = document.getElementById('header') as HTMLElement;
-
-    this.viewportScroller.scrollToPosition([
-      0,
-      el.offsetTop - header.offsetHeight - 25,
-    ]);
+  public scrollHandler(id: string) {
+    this.router.navigate([], { fragment: id });
   }
 }

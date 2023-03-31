@@ -53,7 +53,7 @@ import { AppComponent } from './app.component';
       {
         // Restore the last scroll position
         scrollPositionRestoration: 'enabled',
-        scrollOffset: [0, 0],
+        scrollOffset: [0, 76], //@TODO: Inject this value from token
         // Enable scrolling to anchors
         anchorScrolling: 'enabled',
       }

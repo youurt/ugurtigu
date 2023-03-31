@@ -14,8 +14,66 @@
 .c-writing-feature-table-of-content {
 
   &__toc {
-    position: fixed;
-    right: 0;
-    top: calc(50% - 150px);
+    transform: translateY(calc(-50% - 40px));
   }
- }
+
+  &__toc:hover::before {
+    visibility: visible;
+  }
+
+  &__toc:hover .c-writing-feature-table-of-content__toc-link {
+    visibility: visible;
+  }
+
+  &__toc:hover .c-writing-feature-table-of-content__toc-link-line::after {
+    visibility: hidden;
+  }
+
+  &__toc::before {
+    visibility: hidden;
+    content: 'Table of Content';
+    top: 4px;
+    font-weight: 800;
+    position: absolute;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    transform: translate(32px);
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1), cubic-bezier(0.25, 1, 0.5, 1);
+    transition-delay: 0s, 0s;
+    transition-property: transform, color;
+  }
+
+  &__toc-link {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    transform: translate(32px);
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1), cubic-bezier(0.25, 1, 0.5, 1);
+    transition-delay: 0s, 0s;
+    transition-property: transform, color;
+  }
+
+  &__toc-link:not(.text-accent) {
+
+    .c-writing-feature-table-of-content__toc-link-line::after {
+      opacity: 0.25;
+    }
+  }
+
+  &__toc-link-line::after {
+    content: "";
+      display: block;
+      height: 2px;
+      background-color: currentColor;
+      position: absolute;
+      right: 0;
+      z-index: 2;
+      border-radius: 8px;
+      visibility: visible;
+      transform: translate(0);
+      transform-origin: right;
+  }
+}

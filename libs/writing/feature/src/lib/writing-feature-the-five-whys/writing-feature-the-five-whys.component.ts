@@ -20,14 +20,16 @@ import { WritingMainFeatureComponent } from '../writing-main-feature/writing-mai
           *ngFor="let articleStructure of articleStructures$ | async"
         >
           <section [id]="articleStructure.id">
-            <h2 class="mb-12">{{ articleStructure.title }}</h2>
+            <h2 [attr.data-role]="articleStructure.type" class="mb-12">
+              {{ articleStructure.title }}
+            </h2>
             <div [innerHTML]="articleStructure.content"></div>
           </section>
           <section
             *ngFor="let subHeading of articleStructure.subHeadings"
             [id]="subHeading.id"
           >
-            <h3 class="mb-12">
+            <h3 class="mb-12" [attr.data-role]="subHeading.type">
               {{ subHeading.title }}
             </h3>
             <div [innerHTML]="subHeading.content"></div>

@@ -6,6 +6,7 @@ export const theme = {
     blue: 'rgb(57, 103, 131)',
     red: 'rgb(150, 53, 60)',
     purple: 'rgb(50, 41, 60)',
+    accent: 'rgb(82, 190, 172)',
   },
   fontFamily: {
     serif: ['Garamond', 'serif'],
