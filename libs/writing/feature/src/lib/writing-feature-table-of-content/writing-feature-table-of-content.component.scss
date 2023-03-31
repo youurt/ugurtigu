@@ -16,7 +16,6 @@
   &__toc {
     position: fixed;
     right: 0;
-    top: 50%;
-
+    top: calc(50% - 150px);
   }
  }

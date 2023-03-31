@@ -1,10 +1,10 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostBinding,
-  OnInit,
 } from '@angular/core';
 
 @Component({
@@ -18,7 +18,7 @@ import {
   ></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WritingFeatureTableOfContentComponent implements OnInit {
+export class WritingFeatureTableOfContentComponent implements AfterViewInit {
   /**
    * Host class.
    */
@@ -34,9 +34,9 @@ export class WritingFeatureTableOfContentComponent implements OnInit {
   ) {}
 
   /**
-   * On init.
+   * After view init.
    */
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.generateToc();
     this.observeToc();
   }
@@ -50,6 +50,8 @@ export class WritingFeatureTableOfContentComponent implements OnInit {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          console.log(entry.isIntersecting, entry.target.id);
+
           if (entry.isIntersecting) {
             const el = document.getElementById(
               entry.target.id + '-toc'
