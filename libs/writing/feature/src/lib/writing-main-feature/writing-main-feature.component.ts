@@ -14,7 +14,7 @@ import { CommonUiButtonComponent } from '@ugurtigu/common/ui';
         text="All Posts"
       ></ugurtigu-common-ui-button>
     </div>
-    <div class="grow">
+    <div class="grow max-w-[80ch] mx-auto px-4">
       <ng-content></ng-content>
     </div>
     <div class="grow-0">
