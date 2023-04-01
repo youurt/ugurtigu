@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonDataAccessArticleService } from '@ugurtigu/common/data-access';
+import { CommonUiHeroComponent } from '@ugurtigu/common/ui';
+import { map } from 'rxjs';
 import { WritingFeatureTableOfContentComponent } from '../writing-feature-table-of-content/writing-feature-table-of-content.component';
 import { WritingMainFeatureComponent } from '../writing-main-feature/writing-main-feature.component';
 
@@ -11,10 +13,13 @@ import { WritingMainFeatureComponent } from '../writing-main-feature/writing-mai
     CommonModule,
     WritingMainFeatureComponent,
     WritingFeatureTableOfContentComponent,
+    CommonUiHeroComponent,
   ],
   template: `
     <ugurtigu-writing-main-feature>
       <main class="flex flex-col gap-8 pb-8">
+        <ugurtigu-common-ui-hero [title]="(title$ | async)?.title">
+        </ugurtigu-common-ui-hero>
         <div
           class="flex flex-col gap-8"
           *ngFor="let articleStructure of articleStructures$ | async"
@@ -45,7 +50,25 @@ export class WritingFeatureTheFiveWhysComponent {
   /**
    * Article structures.
    */
-  articleStructures$ = this.commonDataAccessArticleService.articleStructures$;
+  articleStructures$ =
+    this.commonDataAccessArticleService.articleStructures$.pipe(
+      map((articleStructures) =>
+        articleStructures.filter(
+          (articleStructure) => articleStructure.type !== 'h1'
+        )
+      )
+    );
+
+  /**
+   * Article title.
+   */
+  title$ = this.commonDataAccessArticleService.articleStructures$.pipe(
+    map((articleStructures) =>
+      articleStructures.find(
+        (articleStructure) => articleStructure.type === 'h1'
+      )
+    )
+  );
 
   constructor(
     private commonDataAccessArticleService: CommonDataAccessArticleService

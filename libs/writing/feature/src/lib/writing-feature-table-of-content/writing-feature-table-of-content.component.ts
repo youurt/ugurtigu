@@ -21,13 +21,13 @@ interface WritingFeatureTableOfContentLink {
   imports: [CommonModule],
   template: `
     <nav
-      class="flex flex-col gap-1 text-xs fixed right-0 top-2/4 px-6 pt-8 bg-base max-w-[250px] c-writing-feature-table-of-content__toc"
+      class="hidden xl:flex flex-col gap-1 text-xs fixed right-0 top-2/4 pt-8 hover:bg-base max-w-[250px] c-writing-feature-table-of-content__toc"
     >
       <a
         *ngFor="let link of links"
         (click)="scrollHandler(link.id)"
         [id]="link.id + '-toc'"
-        class="cursor-pointer text-ellipsis capitalize c-writing-feature-table-of-content__toc-link"
+        class="cursor-pointer truncate capitalize c-writing-feature-table-of-content__toc-link hover:opacity-80"
         [ngClass]="{
           'is-main': link.type === 'h2',
           'ml-2 is-sub': link.type === 'h3'
@@ -61,6 +61,11 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
   links: WritingFeatureTableOfContentLink[] = [];
 
   /**
+   * The sections.
+   */
+  sections: NodeListOf<Element> | undefined;
+
+  /**
    * @param elRef Element reference.
    * @param viewportScroller Viewport scroller.
    */
@@ -84,13 +89,13 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
    * Observe table of content.
    */
   private observeToc(): void {
-    const sections = document.querySelectorAll('section');
+    this.sections = document.querySelectorAll(
+      'section:not([data-role="hero"])'
+    );
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(entry.isIntersecting, entry.target.id);
-
           if (entry.isIntersecting) {
             const el = document.getElementById(
               entry.target.id + '-toc'
@@ -110,7 +115,7 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
       }
     );
 
-    sections.forEach((section) => {
+    this.sections.forEach((section) => {
       observer.observe(section);
     });
   }
@@ -124,6 +129,10 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
         .querySelectorAll(tag)
         .forEach((elem: Node) => {
           const el = elem as HTMLElement;
+          // skip hero section.
+          if (el.getAttribute('data-role') === 'hero') {
+            return;
+          }
 
           const receivedLinks: WritingFeatureTableOfContentLink = {
             type: (el.firstChild as HTMLHeadingElement).getAttribute(

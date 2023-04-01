@@ -5,7 +5,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   selector: 'ugurtigu-common-ui-hero',
   standalone: true,
   imports: [CommonModule],
-  template: ` <section class="py-24 animate-intro max-w-[960px] mx-auto">
+  template: ` <section
+    data-role="hero"
+    class="py-24 animate-intro max-w-[960px] mx-auto"
+  >
     <h1 class="text-4xl mb-4 font-bold">{{ title }}</h1>
     <h2 class="font-serif italic text-2xl">
       <ng-content></ng-content>

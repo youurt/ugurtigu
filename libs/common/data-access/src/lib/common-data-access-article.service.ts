@@ -4,13 +4,13 @@ import { Observable, of } from 'rxjs';
 interface CommonDataAccessArticleHeading {
   id: string;
   title: string;
-  content: string;
-  type: 'h2' | 'h3';
+  content?: string;
+  type: 'h1' | 'h2' | 'h3';
 }
 
 export interface CommonDataAccessArticleStructure
   extends CommonDataAccessArticleHeading {
-  subHeadings: CommonDataAccessArticleHeading[];
+  subHeadings?: CommonDataAccessArticleHeading[];
 }
 
 @Injectable({
@@ -21,6 +21,11 @@ export class CommonDataAccessArticleService {
    * Observable of articles.
    */
   articleStructures$: Observable<CommonDataAccessArticleStructure[]> = of([
+    {
+      id: 'h1',
+      type: 'h1',
+      title: 'The Five Whys',
+    },
     {
       id: 'h2',
       type: 'h2',
