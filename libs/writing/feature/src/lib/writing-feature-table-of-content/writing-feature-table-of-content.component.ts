@@ -30,7 +30,8 @@ interface WritingFeatureTableOfContentLink {
         class="cursor-pointer truncate capitalize c-writing-feature-table-of-content__toc-link hover:opacity-80"
         [ngClass]="{
           'is-main': link.type === 'h2',
-          'ml-2 is-sub': link.type === 'h3'
+          'ml-2 is-sub': link.type === 'h3',
+          'text-accent': link.id === currentSection
         }"
       >
         <span>
@@ -66,6 +67,11 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
   sections: NodeListOf<Element> | undefined;
 
   /**
+   * Current section.
+   */
+  currentSection?: string;
+
+  /**
    * @param elRef Element reference.
    * @param viewportScroller Viewport scroller.
    */
@@ -97,15 +103,8 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const el = document.getElementById(
-              entry.target.id + '-toc'
-            ) as HTMLElement;
-            el.classList.add('text-accent');
-          } else {
-            const el = document.getElementById(
-              entry.target.id + '-toc'
-            ) as HTMLElement;
-            el.classList.remove('text-accent');
+            this.currentSection = entry.target.id;
+            this.cdr.detectChanges();
           }
         });
       },
@@ -124,28 +123,20 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
    * Extracts table of content from the DOM.
    */
   private generateToc(): void {
-    ['section'].forEach((tag) => {
-      this.elRef.nativeElement.parentElement
-        .querySelectorAll(tag)
-        .forEach((elem: Node) => {
-          const el = elem as HTMLElement;
-          // skip hero section.
-          if (el.getAttribute('data-role') === 'hero') {
-            return;
-          }
+    this.elRef.nativeElement.parentElement
+      .querySelectorAll('section:not([data-role="hero"])')
+      .forEach((elem: Node) => {
+        const el = elem as HTMLElement;
 
-          const receivedLinks: WritingFeatureTableOfContentLink = {
-            type: (el.firstChild as HTMLHeadingElement).getAttribute(
-              'data-role'
-            ),
-            text: (el.firstChild as HTMLHeadingElement).textContent,
-            id: el.id,
-          };
+        const receivedLinks: WritingFeatureTableOfContentLink = {
+          type: (el.firstChild as HTMLHeadingElement).getAttribute('data-role'),
+          text: (el.firstChild as HTMLHeadingElement).textContent,
+          id: el.id,
+        };
 
-          this.links.push(receivedLinks);
-          this.cdr.detectChanges();
-        });
-    });
+        this.links.push(receivedLinks);
+        this.cdr.detectChanges();
+      });
   }
 
   /**
@@ -154,5 +145,7 @@ export class WritingFeatureTableOfContentComponent implements AfterViewInit {
    */
   public scrollHandler(id: string) {
     this.router.navigate([], { fragment: id });
+    this.currentSection = id;
+    this.cdr.detectChanges();
   }
 }
